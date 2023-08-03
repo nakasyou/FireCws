@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json.schemastore.org/chrome-manifest",
+  "name": "Chrome WebStore on Firefox",
+  "manifest_version": 2,
+  "version": "0.1.0",
+  "content_scripts": [
+    {
+      "matches": ["*://chrome.google.com/webstore/*"],
+      "js": ["content_scripts/main.js"]
+    },
+    {
+      "matches": ["*://*/*"],
+      "js": ["content_scripts/main.js"]
+    }
+  ],
+  "background": {
+    "scripts": [
+      "background/background.js"
+    ],
+    "persistent": false
+  },
+  "permissions": [
+    "https://*/*",
+    "webRequest",
+    "webRequestBlocking",
+    "tabs"
+  ],
+  "applications": {
+    "gecko": {
+      "id": "nakasyou1103@gmail.com",
+      "strict_min_version": "42.0"
+    }
+  }
+}
