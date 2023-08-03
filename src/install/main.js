@@ -8,7 +8,7 @@ import blobToBase64 from "../utils/blob-to-base64.js"
  * @param {InputEvent} evt 
  */
 export const install = async (evt) => {
-  evt.target.textContent = "追加中..."
+  evt.target.textContent = "Adding..."
   const url = new URL(location.href)
   const extensionId = url.pathname.split("/").at(-1)
   /*
@@ -35,7 +35,7 @@ export const install = async (evt) => {
   document.querySelector(".e-f-o").append(downloadAtag)
 
   downloadAtag.click()
-  evt.target.textContent = "ダウンロードしました"
+  evt.target.textContent = "Download Successful"
 }
 /**
  * @param {{

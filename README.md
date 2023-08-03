@@ -1,4 +1,4 @@
-# Webstrore on Firefox
+# CrxFox
 
 ## パッケージ化
 ```shell
