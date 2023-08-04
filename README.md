@@ -1,4 +1,4 @@
-# Webstrore on Firefox
+# FireCrx
 
 ## パッケージ化
 ```shell
