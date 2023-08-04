@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/chrome-manifest",
-  "name": "Chrome WebStore on Firefox",
+  "name": "FireCrx",
   "manifest_version": 2,
   "version": "0.1.0",
   "content_scripts": [
