@@ -1,2 +1,2 @@
-# FireCrx Extension
-FireCrxの拡張機能のコード
+# FireCws Extension
+FireCwsの拡張機能のコード
