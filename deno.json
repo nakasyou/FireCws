@@ -1,5 +1,7 @@
 {
   "tasks": {
-    "package": "deno run -A ./scripts/package.ts"
+    "ext:package": "deno run -A ./scripts/package.ts",
+    "server:start": "deno run -A --unstable main.ts",
+    "server:dev": "deno run -A --watch --unstable main.ts"
   }
 }
