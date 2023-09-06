@@ -23,7 +23,7 @@ jobs:
         with:
           deno-version: v1.x
       - name: Build xpi
-        run: deno task package ${{ github.event.inputs.name }}
+        run: deno task package ${{ github.event.inputs.version }}
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
