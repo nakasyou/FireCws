@@ -48,4 +48,4 @@ function crxToZip(buf) {
   return buf.slice(zipStartOffset, buf.length);
 }
 
-export default crxToZip
+export default (crxToZip as ((buf: Uint8Array) => Uint8Array))
