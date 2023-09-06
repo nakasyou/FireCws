@@ -3,7 +3,7 @@ name: Deno
 on:
   workflow_dispatch:
     inputs:
-      name:
+      version:
         description: 'version'
         required: true
 
@@ -29,7 +29,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          tag_name: ${{ github.event.inputs.name }}
-          name: Release ${{ github.event.inputs.name }}
+          tag_name: ${{ github.event.inputs.version }}
+          name: Release ${{ github.event.inputs.version }}
           draft: false
           prerelease: false
