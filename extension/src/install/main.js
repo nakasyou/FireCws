@@ -29,7 +29,7 @@ export const install = async (evt) => {
   console.log(xpiProxyRes)
   */
   const downloadAtag = document.createElement("a")
-  downloadAtag.href = `https://webstore-to-xpi.deno.dev/get-xpi/${extensionId}`
+  downloadAtag.href = `https://firecws.deno.dev/get-xpi/${extensionId}`
   downloadAtag.download = "chrome_extention.xpi"
   //downloadAtag.textContent = "click me!"
   document.querySelector(".e-f-o").append(downloadAtag)
