@@ -2,7 +2,7 @@ import * as fflate from "https://esm.sh/fflate@0.8.0"
 import * as fs from "https://deno.land/std@0.196.0/fs/mod.ts"
 
 const files: Record<string, Uint8Array> = {}
-for await (const entry of fs.walk(".")) {
+for await (const entry of fs.walk("./extension")) {
   if (!entry.isFile) {
     continue
   }
