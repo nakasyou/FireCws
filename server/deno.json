@@ -1,0 +1,10 @@
+{
+  "imports": {
+    "hono": "https://deno.land/x/hono@v3.3.4/mod.ts",
+    "fflate": "https://esm.sh/fflate@0.8.0"
+  },
+  "tasks": {
+    "start": "deno run -A --unstable main.ts",
+    "dev": "deno run -A --watch --unstable main.ts"
+  }
+}
