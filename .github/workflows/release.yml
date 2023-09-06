@@ -2,6 +2,10 @@ name: Deno
 
 on:
   workflow_dispatch:
+    inputs:
+      name:
+        description: 'version'
+        required: true
 
 permissions:
   contents: read
@@ -19,13 +23,13 @@ jobs:
         with:
           deno-version: v1.x
       - name: Build xpi
-        run: deno task package
+        run: deno task package ${{ github.event.inputs.name }}
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          tag_name: ${{ github.ref_name }}
-          name: Release ${{ github.ref_name }}
+          tag_name: ${{ github.event.inputs.name }}
+          name: Release ${{ github.event.inputs.name }}
           draft: false
           prerelease: false
