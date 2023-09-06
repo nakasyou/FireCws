@@ -26,8 +26,5 @@
     "https://deno.land/std@0.196.0/path/posix.ts": "8b7c67ac338714b30c816079303d0285dd24af6b284f7ad63da5b27372a2c94d",
     "https://deno.land/std@0.196.0/path/separator.ts": "0fb679739d0d1d7bf45b68dacfb4ec7563597a902edbaf3c59b50d5bcadd93b1",
     "https://deno.land/std@0.196.0/path/win32.ts": "4fca292f8d116fd6d62f243b8a61bd3d6835a9f0ede762ba5c01afe7c3c0aa12",
-    "https://esm.sh/fflate@0.8.0": "1f66d60a0706faacf36a93f81d341601ac55361246a598d2aa7674c375990178",
-    "https://esm.sh/v130/fflate@0.8.0/denonext/fflate.mjs": "2792676fe3ccd7b23597f69e7601ef914ccf1883465609ae2788d5dd75548937",
-    "https://esm.sh/v130/fflate@0.8.0/lib/index.d.ts": "cb25d68883acc2f10a19f3289541aedec1d08576e7bb7391ea8c51f120adeec5"
   }
 }
