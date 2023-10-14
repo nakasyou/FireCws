@@ -1,5 +1,7 @@
 // https://github.com/peerigon/unzip-crx/blob/master/src/index.js
 // Mit License
+// @ts-nocheck そのままを維持するため。Typeはラップ済み
+
 function crxToZip(buf) {
   function calcLength(a, b, c, d) {
       let length = 0;

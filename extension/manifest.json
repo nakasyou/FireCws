@@ -2,6 +2,7 @@
   "$schema": "https://json.schemastore.org/chrome-manifest",
   "name": "FireCws",
   "manifest_version": 2,
+  "version": "0.1.4",
   "content_scripts": [
     {
       "matches": [

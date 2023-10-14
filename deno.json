@@ -1,7 +1,12 @@
 {
   "tasks": {
     "ext:package": "deno run -A ./scripts/package.ts",
-    "server:start": "deno run -A --unstable main.ts",
-    "server:dev": "deno run -A --watch --unstable main.ts"
+    "server:start": "deno run -A --unstable ./server/main.ts",
+    "server:dev": "deno run -A --watch --unstable ./server/main.ts"
+  },
+  "imports": {
+    "hono": "https://deno.land/x/hono@v3.3.4/mod.ts",
+    "fflate": "https://esm.sh/fflate@0.8.0",
+    "zod": "https://esm.sh/zod@3.22.4"
   }
 }

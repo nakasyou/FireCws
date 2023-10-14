@@ -1,4 +1,4 @@
-import * as fflate from "https://esm.sh/fflate@0.8.0"
+import * as fflate from "fflate"
 import * as fs from "https://deno.land/std@0.196.0/fs/mod.ts"
 
 const version = Deno.args[0]

@@ -3,7 +3,6 @@
   "remote": {
     "https://deno.land/x/hono@v3.3.4/client/client.ts": "7a819af2aa9aabc746add4d01715fa37f83676fdf1b63fba1bbcd655b2d066a5",
     "https://deno.land/x/hono@v3.3.4/client/index.ts": "3ff4cf246f3543f827a85a2c84d66a025ac350ee927613629bda47e854bfb7ba",
-    "https://deno.land/x/hono@v3.3.4/client/types.ts": "256a282e327fc46578de12097f22f6c295343a90c5670ae377b7967cf1622c66",
     "https://deno.land/x/hono@v3.3.4/client/utils.ts": "053273c002963b549d38268a1b423ac8ca211a8028bdab1ed0b781a62aa5e661",
     "https://deno.land/x/hono@v3.3.4/compose.ts": "e55ed7be2134f363ff3c8e8e2f520ff682c6a11a47d7189100ed69704ce10b9e",
     "https://deno.land/x/hono@v3.3.4/context.ts": "a9d2dba3528df1a804d78630f867a8aaee2ebc8b498c5c781eeb057539dedb20",
@@ -29,13 +28,23 @@
     "https://deno.land/x/hono@v3.3.4/types.ts": "d9733cf808ae9828fb12b62ff4decc23992da8f2050294a16e4af6d90db302f3",
     "https://deno.land/x/hono@v3.3.4/utils/body.ts": "67627aaac6ea8d3d2f2ffcb0aabccfe0c854ee11eaecd36dfcc2f012005337f7",
     "https://deno.land/x/hono@v3.3.4/utils/cookie.ts": "ff2f948c27fb8867fc990b1b6b182dfbe4c263c60a94cd33aefa77af5cdb1655",
-    "https://deno.land/x/hono@v3.3.4/utils/http-status.ts": "e0c4343ea7717c314dc600131e16b636c29d61cfdaf9df93b267258d1729d1a0",
-    "https://deno.land/x/hono@v3.3.4/utils/types.ts": "634ee00ae271302b2decf73edb91d843feb9fc7bfd43ea643d1b14861914577d",
     "https://deno.land/x/hono@v3.3.4/utils/url.ts": "ad1c84749c1d8fc9b069a074003855b52c04bd56b64ac731a0abc276dfe90dcc",
     "https://deno.land/x/hono@v3.3.4/validator/index.ts": "6c986e8b91dcf857ecc8164a506ae8eea8665792a4ff7215471df669c632ae7c",
     "https://deno.land/x/hono@v3.3.4/validator/validator.ts": "e52183ddf8cefc3cfe2788802fe6ce766df8ac904df485107b01cbcca167dbad",
-    "https://esm.sh/fflate@0.8.0": "1f66d60a0706faacf36a93f81d341601ac55361246a598d2aa7674c375990178",
-    "https://esm.sh/v130/fflate@0.8.0/denonext/fflate.mjs": "2792676fe3ccd7b23597f69e7601ef914ccf1883465609ae2788d5dd75548937",
-    "https://esm.sh/v130/fflate@0.8.0/lib/index.d.ts": "cb25d68883acc2f10a19f3289541aedec1d08576e7bb7391ea8c51f120adeec5"
+    "https://esm.sh/fflate@0.8.0": "4fb3aca65c818d1498afe625eb1df540d00a8d24dc283b5d3751e884a2175c35",
+    "https://esm.sh/v133/fflate@0.8.0/denonext/fflate.mjs": "2792676fe3ccd7b23597f69e7601ef914ccf1883465609ae2788d5dd75548937",
+    "https://esm.sh/v133/zod@3.22.4/denonext/zod.mjs": "660128af5d1e921745c4d452472d103d9f2fc5afa508bbf233b83d35a272ad67",
+    "https://esm.sh/zod@3.22.4": "fb3df591328a7b9662e972aa3bdbab19efdbabda9c89ade59ecedfc100bafe34"
+  },
+  "npm": {
+    "specifiers": {
+      "zod": "zod@3.21.4"
+    },
+    "packages": {
+      "zod@3.21.4": {
+        "integrity": "sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==",
+        "dependencies": {}
+      }
+    }
   }
 }
