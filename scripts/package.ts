@@ -13,7 +13,9 @@ for await (const entry of fs.walk("./extension")) {
     continue
   }
   const path = entry.path.replace("\\", "/") // Windows to Linux
+    .replace(/^extension\//, '') // サブディレクトリ`extension`をルートに
   files[path] = await Deno.readFile(entry.path)
 }
+console.log(files)
 await fs.emptyDir("./dist")
 await Deno.writeFile("./dist/firefox.xpi", fflate.zipSync(files))

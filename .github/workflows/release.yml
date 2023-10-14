@@ -23,7 +23,7 @@ jobs:
         with:
           deno-version: v1.x
       - name: Build xpi
-        run: deno task package ${{ github.event.inputs.version }}
+        run: deno task ext:package ${{ github.event.inputs.version }}
       - name: Create release
         id: create_release
         uses: actions/create-release@v1.0.0
