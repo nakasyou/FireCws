@@ -2,15 +2,22 @@
   "$schema": "https://json.schemastore.org/chrome-manifest",
   "name": "FireCws",
   "manifest_version": 2,
-  "version": "0.1.0",
   "content_scripts": [
     {
-      "matches": ["*://chrome.google.com/webstore/*"],
-      "js": ["content_scripts/main.js"]
+      "matches": [
+        "*://chrome.google.com/webstore/*"
+      ],
+      "js": [
+        "content_scripts/main.js"
+      ]
     },
     {
-      "matches": ["*://*/*"],
-      "js": ["content_scripts/main.js"]
+      "matches": [
+        "*://*/*"
+      ],
+      "js": [
+        "content_scripts/main.js"
+      ]
     }
   ],
   "background": {
