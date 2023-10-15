@@ -11,14 +11,6 @@
       "js": [
         "content_scripts/main.js"
       ]
-    },
-    {
-      "matches": [
-        "*://*/*"
-      ],
-      "js": [
-        "content_scripts/main.js"
-      ]
     }
   ],
   "background": {
