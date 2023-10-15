@@ -1,5 +1,21 @@
 {
-  "version": "2",
+  "version": "3",
+  "packages": {
+    "specifiers": {
+      "npm:tsafe": "npm:tsafe@1.6.5",
+      "npm:zod": "npm:zod@3.21.4"
+    },
+    "npm": {
+      "tsafe@1.6.5": {
+        "integrity": "sha512-895zss8xqqHKTc28sHGIfZKnt3C5jrstB1DyPr/h3/flK0zojsZUMQL1/W4ytdDW6KI4Oth62nb9rrxmA3s3Iw==",
+        "dependencies": {}
+      },
+      "zod@3.21.4": {
+        "integrity": "sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==",
+        "dependencies": {}
+      }
+    }
+  },
   "remote": {
     "https://deno.land/x/hono@v3.3.4/client/client.ts": "7a819af2aa9aabc746add4d01715fa37f83676fdf1b63fba1bbcd655b2d066a5",
     "https://deno.land/x/hono@v3.3.4/client/index.ts": "3ff4cf246f3543f827a85a2c84d66a025ac350ee927613629bda47e854bfb7ba",
@@ -35,16 +51,5 @@
     "https://esm.sh/v133/fflate@0.8.0/denonext/fflate.mjs": "2792676fe3ccd7b23597f69e7601ef914ccf1883465609ae2788d5dd75548937",
     "https://esm.sh/v133/zod@3.22.4/denonext/zod.mjs": "660128af5d1e921745c4d452472d103d9f2fc5afa508bbf233b83d35a272ad67",
     "https://esm.sh/zod@3.22.4": "fb3df591328a7b9662e972aa3bdbab19efdbabda9c89ade59ecedfc100bafe34"
-  },
-  "npm": {
-    "specifiers": {
-      "zod": "zod@3.21.4"
-    },
-    "packages": {
-      "zod@3.21.4": {
-        "integrity": "sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==",
-        "dependencies": {}
-      }
-    }
   }
 }
