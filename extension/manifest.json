@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/chrome-manifest",
   "name": "FireCws",
   "manifest_version": 2,
-  "version": "0.1.4",
+  "version": "0.1.6",
   "content_scripts": [
     {
       "matches": [
@@ -21,12 +21,6 @@
       ]
     }
   ],
-  "background": {
-    "scripts": [
-      "background/background.js"
-    ],
-    "persistent": false
-  },
   "permissions": [
     "https://*/*",
     "webRequest",
@@ -40,6 +34,6 @@
     }
   },
   "icons": {
-    "256": "./assets/firecrx-256x256.png"
+    "512": "./assets/firecrx-512x512.png"
   }
 }
