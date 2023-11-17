@@ -1,0 +1,30 @@
+{
+  "version": "3",
+  "packages": {
+    "specifiers": {
+      "npm:zod": "npm:zod@3.22.4"
+    },
+    "npm": {
+      "zod@3.22.4": {
+        "integrity": "sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==",
+        "dependencies": {}
+      }
+    }
+  },
+  "remote": {
+    "https://esm.sh/fflate@0.8.0": "726a76a43ea2183854e6c06a8cc2d3fabbaa281b6b2ba6678172a36d9d32d19f",
+    "https://esm.sh/v134/fflate@0.8.0/denonext/fflate.mjs": "2792676fe3ccd7b23597f69e7601ef914ccf1883465609ae2788d5dd75548937",
+    "https://firecws.deno.dev/x": "5efeff2ddef01946790b1831db31dd8c6eadb9978b46e3b781ffe54f894fbeab",
+    "https://raw.githubusercontent.com/nakasyou/FireCws/main/compiler/core/compile/mod.ts": "509437e73f4934298ec09bad46760b8d483f2e40027e850dcae4545c74d7d5d3",
+    "https://raw.githubusercontent.com/nakasyou/FireCws/main/compiler/core/compile/plugins/base-manifest-transform.ts": "76b78f1acf6158dc567d4dc34e6aebaacfe51a8fcbef660079aaf03437d9b60f",
+    "https://raw.githubusercontent.com/nakasyou/FireCws/main/compiler/core/compile/plugins/mod.ts": "71595cf4fd47b7a97bafbb51f94c6e6fce769d4f6a049c5513f11d7722fd3cbd",
+    "https://raw.githubusercontent.com/nakasyou/FireCws/main/compiler/core/compile/plugins/types.ts": "c9e917f1f5ff0ce36775c2cb4e37a544e3f0b1a88e2c00003f555402c202b4db",
+    "https://raw.githubusercontent.com/nakasyou/FireCws/main/compiler/core/compiler.ts": "f4669838df4cb933f1047c9e871616d8a8fb0c5b66f52bf1bfc6cd499f809179",
+    "https://raw.githubusercontent.com/nakasyou/FireCws/main/compiler/core/extension.ts": "efb493ea354b486aca6712606ddf965fa6754e6035895c8b1f690c9f766af70c",
+    "https://raw.githubusercontent.com/nakasyou/FireCws/main/compiler/core/mod.ts": "a537fc873ecf915eb8b5221b00820115ab5dc8ee65add4548c7425f8373cdcdb",
+    "https://raw.githubusercontent.com/nakasyou/FireCws/main/compiler/deps/fflate.ts": "69e92a45c0926e4f25fa0017b0e4dc29ddfedc057008161050dc9e8331b1c378",
+    "https://raw.githubusercontent.com/nakasyou/FireCws/main/compiler/lib/crx-to-zip.js": "c6d3d49f00b9964c7fc698e4fd9e201c580f5c856a3757b0b0cc49c6ef115730",
+    "https://raw.githubusercontent.com/nakasyou/FireCws/main/compiler/loader/mod.ts": "a3e418b07c19f021686529d583695cf096753c020cb568ed6a69a8d9e3dad783",
+    "https://raw.githubusercontent.com/nakasyou/FireCws/main/compiler/mod.ts": "0b8b61960673052474569489ae830f4a8e18f3ff913d722604a79c42fe88d625"
+  }
+}
