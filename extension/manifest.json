@@ -6,7 +6,7 @@
   "content_scripts": [
     {
       "matches": [
-        "*://chrome.google.com/webstore/*"
+        "*://chromewebstore.google.com/*"
       ],
       "js": [
         "content_scripts/main.js"

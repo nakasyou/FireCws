@@ -3,10 +3,11 @@
  * @returns Promise
  */
 export const waitWebstoreLoaded = () => new Promise((resolve) => {
-  const intervalId = setInterval(() => {
+  resolve()
+  /*onst intervalId = setInterval(() => {
     if (document.getElementsByClassName("e-f-w-Va").length !== 0) {
       clearInterval(intervalId)
       resolve()
     }
-  }, 100)
+  }, 100)*/
 })

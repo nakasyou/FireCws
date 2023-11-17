@@ -5,7 +5,6 @@ import { addInstallBtn } from "./steps/add-install-btn.js"
 import { removeRecommendChrome } from "./steps/remove-recommend-chrome.js"
 import { install, pre } from "./install/main.js"
 
-
 let oldUrl = ""
 /**
  * 
@@ -19,8 +18,32 @@ const urlChangeListener = (func) => {
   setTimeout(urlChangeListener, 100, func)
 }
 
+let intervalId = null
 urlChangeListener(async () => {
-  await waitWebstoreLoaded()
+  const thisUrlStore = {}
+
+  clearInterval(intervalId)
+  intervalId = setInterval(async () => {
+    removeRecommendChrome(thisUrlStore)
+    
+    /**
+     * @type {HTMLButtonElement}
+     */
+    const addChrome = document.querySelector(`button[jscontroller][jsaction][aria-describedby="i5"]`)
+    if (addChrome) {
+      addChrome.disabled = false
+      addChrome.onclick = install
+      
+    }
+    //removeDefaultAddChromeBtn(thisUrlStore)
+  
+    /*const installBtn = addInstallBtn()
+    pre({
+      installBtn
+    })
+    installBtn.addEventListener("click", install)*/
+  }, 100)
+  /*await waitWebstoreLoaded()
   removeRecommendChrome()
   removeDefaultAddChromeBtn()
 
@@ -28,6 +51,5 @@ urlChangeListener(async () => {
   pre({
     installBtn
   })
-  installBtn.addEventListener("click", install)
+  installBtn.addEventListener("click", install)*/
 })
-
