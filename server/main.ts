@@ -5,10 +5,10 @@ const app = new Hono()
 
 const compiler = new Compiler()
 
-app.get('/x/:ver?', async c => {
+app.get('/x/:ver?', c => {
   const ver = c.req.param('ver') || 'main'
   
-  c.header('Content-Type', 'text/typescript')
+  c.header('Content-Type', 'application/typescript')
 
   return c.text(`export * from 'https://github.com/nakasyou/FireCws/blob/${ver}/compiler/mod.ts'`)
 })
