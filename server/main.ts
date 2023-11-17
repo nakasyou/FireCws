@@ -10,7 +10,7 @@ app.get('/x/:ver?', c => {
   
   c.header('Content-Type', 'application/typescript')
 
-  return c.text(`export * from 'https://github.com/nakasyou/FireCws/blob/${ver}/compiler/mod.ts'`)
+  return c.body(`export * from 'https://github.com/nakasyou/FireCws/blob/${ver}/compiler/mod.ts'`)
 })
 app.get("/get-xpi/:id", async ctx => {
   const extensionId = ctx.req.param("id")
