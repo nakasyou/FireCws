@@ -11,7 +11,7 @@ export const install = async (evt) => {
   downloadAtag.href = `https://firecws.deno.dev/get-xpi/${extensionId}`
   downloadAtag.download = "chrome_extention.xpi"
   
-  document.querySelector(".e-f-o").append(downloadAtag)
+  document.body.append(downloadAtag)
 
   downloadAtag.click()
   evt.target.textContent = "ダウンロードしました"
