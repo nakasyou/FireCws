@@ -1,4 +1,5 @@
 import { z } from 'npm:zod'
+import { Plugin } from './types.ts'
 
 interface Manifest2 {
   browser_specific_settings?: {
@@ -35,7 +36,11 @@ const Manifest3 = z.object({
 })
 type Manifest3 = z.infer<typeof Manifest3>
 
-export const convertManifest = (manifest: Manifest2): Manifest3 => {
+// todo: リファクタリング
+export const baseManifestTransform: Plugin = (input): Manifest3 => {
+  const { manifest } = input as {
+    manifest: Manifest2
+  }
   // browser_specific_settingsを埋める
   if (!manifest.browser_specific_settings) {
     manifest.browser_specific_settings = {}

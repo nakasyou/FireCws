@@ -1,8 +1,9 @@
 import { Hono } from "hono"
-import crxToZip from "./utils/crx-to-zip.ts"
-import zipToXpi from "./utils/zip-to-xpi.ts"
+import { Compiler } from '../compiler/mod.ts'
 
 const app = new Hono()
+
+const compiler = new Compiler()
 
 app.get("/get-xpi/:id", async ctx => {
   const extensionId = ctx.req.param("id")
@@ -11,8 +12,8 @@ app.get("/get-xpi/:id", async ctx => {
   const crxBuff = await fetch(crxUrl).then(res => res.arrayBuffer())
   const crxData = new Uint8Array(crxBuff)
 
-  const zipData = crxToZip(crxData)
-  const xpiData = await zipToXpi(zipData)
+  const xpiData = compiler.fromUint8Array(crxData)
+    .compile()
 
   ctx.header("Access-Control-Allow-Origin", "*")
   ctx.header("content-type", "application/x-xpinstall")
