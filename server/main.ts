@@ -5,19 +5,12 @@ const app = new Hono()
 
 const compiler = new Compiler()
 
-app.get('/x/*', async c => {
-  const path = c.req.path.slice(3)
+app.get('/x/:ver?', async c => {
+  const ver = c.req.param('ver') || 'main'
+  
+  c.header('Content-Type', 'text/typescript')
 
-  try {
-    const resText = await Deno.readTextFile('compiler/' + path.replace('\\', '/'))
-    c.header('Content-Type', 'text/typescript')
-    return c.text(resText)
-  } catch (error) {
-    if (error instanceof Deno.errors.NotFound) {
-      return c.notFound()
-    }
-    throw error
-  }
+  return c.text(`export * from 'https://github.com/nakasyou/FireCws/blob/${ver}/compiler/mod.ts'`)
 })
 app.get("/get-xpi/:id", async ctx => {
   const extensionId = ctx.req.param("id")
