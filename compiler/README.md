@@ -7,5 +7,5 @@ It is written Deno TypeScript.
 ## Usage
 Import FireCws Compiler:
 ```ts
-import * as firecws from 'https://deno.land/x/firecws/mod.ts'
+import * as firecws from 'https://firecws.deno.dev/x'
 ```
