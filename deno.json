@@ -2,7 +2,8 @@
   "tasks": {
     "ext:package": "deno run -A ./scripts/package.ts",
     "server:start": "deno run -A --unstable ./server/main.ts",
-    "server:dev": "deno run -A --watch --unstable ./server/main.ts"
+    "server:dev": "deno run -A --watch --unstable ./server/main.ts",
+    "ext:dev": "deno run -A --watch ./scripts/extension.ts dev"
   },
   "imports": {
     "hono": "https://deno.land/x/hono@v3.3.4/mod.ts",
@@ -14,7 +15,14 @@
     "lib": [
       "deno.window",
       "DOM",
-      "ESNext"
+      "ESNext",
+      "dom.iterable",
+      "dom.asynciterable",
+      "deno.ns"
+    ],
+    "types": [
+      "npm:@types/chrome",
+      "npm:@types/firefox-webext-browser"
     ]
   }
 }
