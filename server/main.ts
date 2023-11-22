@@ -1,5 +1,6 @@
 import { Hono } from "hono"
 import { Compiler, loadFromChromeWebStore } from '../compiler/mod.ts'
+import swServer from './sw-server/hono.tsx'
 
 const app = new Hono()
 
@@ -24,4 +25,6 @@ app.get("/get-xpi/:id", async ctx => {
   ctx.header("content-type", "application/x-xpinstall")
   return ctx.body(xpiData)
 })
+swServer(app)
+
 Deno.serve(app.fetch)
