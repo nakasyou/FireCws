@@ -11,21 +11,41 @@ export const build = async (isDev: boolean) => {
   delete manifestJson['$schema']
   await Deno.writeTextFile(`./${basePath}/manifest.json`, JSON.stringify(manifestJson))
 
+  const baseEsbuildConfig = {
+    bundle: true,
+    plugins: [
+      {
+        name: 'Type Plugin',
+        setup(build) {
+          build.onResolve({ filter: /^(npm\:\@types\/firefox-webext-browser)|(npm:@types\/chrome)$/ }, args => ({
+            path: args.path,
+            namespace: 'empty-ns',
+          }))
+          build.onLoad({ filter: /.*/, namespace: 'empty-ns' }, () => ({
+            loader: 'js',
+            contents: ''
+          }))
+        }
+      },
+      ...denoPlugins()
+    ],
+    sourcemap: true,
+    external: ['npm:@types/firefox-webext-browser'],
+    define: {
+      'import.meta.dev': isDev.toString()
+    }
+  } satisfies esbuild.BuildOptions
   await esbuild.build({
+    ...baseEsbuildConfig,
     entryPoints: ['./extension/webstore_script/main.ts'],
     outfile: `./${basePath}/webstore.js`,
-    bundle: true,
-    plugins: [...denoPlugins()],
-    sourcemap: true,
-    external: ['npm:@types/firefox-webext-browser']
   })
   await esbuild.build({
+    ...baseEsbuildConfig,
     entryPoints: ['./extension/background/main.ts'],
-    outfile: `./${basePath}/background.js`,
-    bundle: true,
-    plugins: [...denoPlugins()],
-    sourcemap: true,
+    outfile: `./${basePath}/background.js`
   })
+  
   for await (const entry of fs.walk('./extension/public')) {
     const distPath = path.join('dev-dist', entry.path.replace(/^extension[\\\/]public/, ''))
     if (entry.isDirectory) {

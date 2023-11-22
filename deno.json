@@ -22,7 +22,8 @@
     ],
     "types": [
       "npm:@types/chrome",
-      "npm:@types/firefox-webext-browser"
+      "npm:@types/firefox-webext-browser",
+      "types/types.d.ts"
     ]
   }
 }
