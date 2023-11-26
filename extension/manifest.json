@@ -1,8 +1,6 @@
 {
-  "$schema": "https://json.schemastore.org/chrome-manifest",
   "name": "FireCws",
   "manifest_version": 2,
-  "version": "0.1.6",
   "content_scripts": [
     {
       "matches": [
@@ -32,5 +30,6 @@
     "scripts": [
       "background.js"
     ]
-  }
+  },
+  "version": "0.0.0"
 }

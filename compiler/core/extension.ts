@@ -1,3 +1,4 @@
+import type { CompileResult } from "./compile/mod.ts"
 import { Compiler } from "./compiler.ts"
 
 export class Extension {
@@ -12,7 +13,7 @@ export class Extension {
    * Compile this extension to xpi
    * @returns Compiled xpi file
    */
-  compile (): Uint8Array {
+  compile (): CompileResult {
     return this.#compiler.compile(this)
   }
 

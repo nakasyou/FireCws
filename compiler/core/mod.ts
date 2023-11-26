@@ -5,3 +5,7 @@ export {
 export {
   Extension
 } from './extension.ts'
+export type {
+  Plugin,
+  Plugins
+} from './compile/mod.ts'
