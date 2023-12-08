@@ -5,7 +5,7 @@ import * as esbuild from 'https://deno.land/x/esbuild@v0.19.2/mod.js'
 import { denoPlugins } from "https://deno.land/x/esbuild_deno_loader@0.8.2/mod.ts"
 
 export const build = async (isDev: boolean) => {
-  const basePath = isDev ? 'dev-dist': 'ext-tmp'
+  const basePath = 'dev-dist'
 
   const manifestJson = JSON.parse(await Deno.readTextFile('./extension/manifest.json'))
   delete manifestJson['$schema']
@@ -63,6 +63,7 @@ export const build = async (isDev: boolean) => {
     await Deno.copyFile(entry.path, distPath)
   }
 }
+import * as fflate from 'fflate'
 
 if (import.meta.main) {
   if (Deno.args[0] === 'dev') {
@@ -75,5 +76,28 @@ if (import.meta.main) {
     for await (const _event of watcher) {
       await build(true)
     }
+  } else if (Deno.args[0] === 'build') {
+    await fs.emptyDir('./dev-dist')
+    await build(false)
+
+    const version = Deno.args[1]
+
+    const manifest = JSON.parse(await Deno.readTextFile('./dev-dist/manifest.json'))
+    manifest.version = version
+    await Deno.writeTextFile('./dev-dist/manifest.json', JSON.stringify(manifest, null, 2))
+    
+    const files: Record<string, Uint8Array> = {}
+    for await (const entry of fs.walk("./dev-dist")) {
+      if (!entry.isFile) {
+        continue
+      }
+      const path = entry.path.replaceAll("\\", "/") // Windows to Linux
+        .replace(/^dev-dist\//, '') // サブディレクトリ`extension`をルートに
+      files[path] = await Deno.readFile(entry.path)
+    }
+    console.log(Object.keys(files))
+    await fs.emptyDir("./dist")
+    await Deno.writeFile("./dist/firefox.xpi", fflate.zipSync(files))
+    Deno.exit()
   }
 }
