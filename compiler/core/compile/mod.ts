@@ -48,6 +48,8 @@ export type CompileState = {
   state: 'ZIPING'
 } | {
   state: 'COMPILED'
+} | {
+  state: 'READY'
 }
 
 export const compile = (chromeExtension: Extension, opts: CompilerInit): CompileResult => {
@@ -74,7 +76,7 @@ export const compile = (chromeExtension: Extension, opts: CompilerInit): Compile
     }
   }
   const stateStream = new StateStream()
-  ;(async () => {
+  const run = async () => {
     const crxData = chromeExtension.getCrxData()
     nextStateFunc({
       state: 'CRX_TO_ZIP'
@@ -129,7 +131,6 @@ export const compile = (chromeExtension: Extension, opts: CompilerInit): Compile
     for (const plugin of plugins) {
       await plugin.onCompile(compileInit)
     }
-  
     fileTree['manifest.json'] = new TextEncoder().encode(JSON.stringify(manifestJson, null, 2))
     nextStateFunc({
       state: 'ZIPING'
@@ -140,8 +141,11 @@ export const compile = (chromeExtension: Extension, opts: CompilerInit): Compile
     nextStateFunc({
       state: 'COMPILED'
     })
-  })()
-
+  }
+  nextStateFunc({
+    state: 'READY'
+  })
+  run()
   return {
     compiled,
     stateStream: stateStream
