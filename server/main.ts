@@ -21,7 +21,7 @@ app.get("/get-xpi/:id", async c => {
   const crxData = await loadFromChromeWebStore(extensionId)
 
   const xpiData = await compiler.fromUint8Array(crxData)
-    .compile()
+    .compile().compiled
 
   c.header("Access-Control-Allow-Origin", "*")
   c.header("content-type", c.req.query('zip') !== undefined ? 'application/zip' : "application/x-xpinstall")
