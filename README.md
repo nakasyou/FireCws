@@ -39,7 +39,7 @@ const extension = compiler.fromUint8Array(crxData, {
 
 Extensionをxpiにコンパイル:
 ```ts
-const xpiData = await extension.compile() // Uint8Array
+const xpiData = await extension.compile().compiled // Uint8Array
 ```
 ## サポート一覧表
 - 💯 - 完全に動作することが証明済み
