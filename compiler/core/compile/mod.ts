@@ -1,8 +1,7 @@
 import type { Extension, CompilerInit } from "../mod.ts"
 import crxToZip from '../../lib/crx-to-zip.js'
 import { unzipSync, zipSync } from '../../deps/fflate.ts'
-import { resolve } from "https://deno.land/std@0.196.0/path/win32.ts";
-
+import type { ExtensionMetadata } from "../extension.ts"
 export interface Plugin {
   /**
    * This plugin name
@@ -15,7 +14,7 @@ export interface Plugin {
    */
   onCompile (init: {
     fileTree: Record<string, Uint8Array | undefined>
-    manifest: object
+    manifest: any
     
     /**
      * Firefox major version
@@ -24,6 +23,8 @@ export interface Plugin {
 
     open (path: string): File
     regexpWalk (regexp: RegExp): File[]
+
+    metadata: ExtensionMetadata
   }): Promise<void> | void
 }
 interface File {
@@ -37,7 +38,7 @@ export type Plugins = Plugin[]
 
 export interface CompileResult {
   compiled: Promise<Uint8Array>
-  stateGenerator: AsyncGenerator<CompileState, CompileState, unknown>
+  stateStream: ReadableStream<CompileState>
 }
 export type CompileState = {
   state: 'CRX_TO_ZIP'
@@ -48,7 +49,6 @@ export type CompileState = {
 } | {
   state: 'COMPILED'
 }
-type X = CompileResult['stateGenerator']['next']
 
 export const compile = (chromeExtension: Extension, opts: CompilerInit): CompileResult => {
   let compiledFunc: (data: Uint8Array) => void = () => undefined
@@ -58,18 +58,22 @@ export const compile = (chromeExtension: Extension, opts: CompilerInit): Compile
       resolve(data)
     }
   })
-  const stateGenerator = async function * () {
-    while (true) {
-      const res = await new Promise<CompileState>(resolve => {
-        nextStateFunc = resolve
+  class StateStream extends ReadableStream<CompileState> {
+    count = 0;
+    constructor () {
+      super({
+        start(controller) {
+          nextStateFunc = (state) => {
+            controller.enqueue(state)
+            if (state.state === "COMPILED") {
+              controller.close()
+            }
+          }
+        },
       })
-      if (res.state === 'COMPILED') {
-        return res
-      }
-      yield res
     }
   }
-  
+  const stateStream = new StateStream()
   ;(async () => {
     const crxData = chromeExtension.getCrxData()
     nextStateFunc({
@@ -120,6 +124,7 @@ export const compile = (chromeExtension: Extension, opts: CompilerInit): Compile
         }
         return result
       },
+      metadata: chromeExtension.getMetadata()
     }
     for (const plugin of plugins) {
       await plugin.onCompile(compileInit)
@@ -136,9 +141,9 @@ export const compile = (chromeExtension: Extension, opts: CompilerInit): Compile
       state: 'COMPILED'
     })
   })()
-  
+
   return {
     compiled,
-    stateGenerator: stateGenerator()
+    stateStream: stateStream
   }
 }

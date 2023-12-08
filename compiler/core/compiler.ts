@@ -1,4 +1,4 @@
-import { Extension } from "./extension.ts"
+import { Extension, type ExtensionMetadata } from "./extension.ts"
 import { compile, type Plugin, type CompileResult } from "./compile/mod.ts"
 
 export interface CompilerInit {
@@ -42,8 +42,8 @@ export class Compiler {
    * @param data crx file data
    * @returns Crx Extension Data instance
    */
-  fromUint8Array (data: Uint8Array) {
-    return new Extension(data, this)
+  fromUint8Array (data: Uint8Array, metadata?: ExtensionMetadata) {
+    return new Extension(data, this, metadata)
   }
 
   /**
