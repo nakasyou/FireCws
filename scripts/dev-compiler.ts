@@ -43,6 +43,7 @@ console.timeEnd('state')
 
 const xpiData = await compileProcess.compiled
 
+await Deno.writeFile(join('tmp', Deno.args[0] + '.xpi'), xpiData)
 await emptyDir(join('tmp', Deno.args[0]))
 for (const [path, data] of Object.entries(unzipSync(xpiData))) {
   const writePath = join('tmp', Deno.args[0], path)

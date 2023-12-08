@@ -1,35 +1,32 @@
 <div align="center">
 
   ![image](./assets/firecrx.svg)
-  ### FireCrx
+  ### FireCws
 </div>
 
-# Welcome to FireCws's repo!
-FireCws は、Chrome WebStoreからFirefoxでインストールできるようにする拡張機能です。
+FireCws は、Chrome用に書かれた拡張機能(.crx)をFirefox用拡張機能(.xpi)にコンパイルするライブラリです。
+また、それを用いたChrome WebStoreからFirefoxでインストールできるようにする拡張機能も含まれていました。
+
 ## なんのために？
 Firefoxの欠点として、世界最大のブラウザ拡張機能プラットフォームである、Chrome Web Storeが使えない点がありました。それを解決します。
-## 開発ガイド
-### 拡張機能
-#### パッケージ化
-0. Denoをインストールします
-1. 次のコマンドを入力します
-```shell
-deno task ext:package
-```
-2. `dist/firefox.xpi`にxpiファイルが出力されるはずです。
-### サーバー
-#### 前提条件
-- Denoがインストールされていること
-#### 開発
-```shell
-deno task server:dev
-```
-で、開発サーバーが起動します。
-#### 本番環境
-```shell
-deno task server:start
-```
-です。
+
+## サポート一覧表
+- 💯 - 完全に動作することが証明済み
+- ✅ - 不自然な点なし
+- ⭕ - 不自然な点があるが、大体の機能は使える
+- 🤔 - エラーがでたりして、完全に機能が使えない。不便。
+- ❌ - インストールができない
+
+| 名前 | チェック時拡張機能バージョン | チェック時FireCwsバージョン | Status |
+| --- | --- | --- | --- |
+| [LINE](https://chromewebstore.google.com/detail/line/ophjlpahpchlmihnnnihgmmeilfjmjjc?hl=ja) | 3.1.2 | 0.2.0 | 🤔 |
+
+## 問題点
+コンパイル構造が肥大化していて、かなりコンパイルが遅いです。
+
+## Special Thanks
+- @EdamAme-x
+  - LINE が origin を判定している事実とその解決策のアドバイス
 
 ## ライセンス
 特にファイルに明記してない限り、MIT LICENSEとします。
