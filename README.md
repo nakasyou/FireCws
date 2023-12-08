@@ -10,6 +10,37 @@ FireCws は、Chrome用に書かれた拡張機能(.crx)をFirefox用拡張機�
 ## なんのために？
 Firefoxの欠点として、世界最大のブラウザ拡張機能プラットフォームである、Chrome Web Storeが使えない点がありました。それを解決します。
 
+## つかいかた
+デフォルトのプラグインを用いてコンパイラを作成:
+```ts
+import { Compiler, defaultPlugins } from 'https://firecws.deno.dev/x'
+
+const compiler = new Compiler({
+  plugins: [
+    ...defaultPlugins()
+  ]
+})
+```
+
+Crx FileをChrome Web Storeから読み込み:
+```ts
+import { loadFromChromeWebStore } from 'https://firecws.deno.dev/x'
+
+const extensionId = 'ophjlpahpchlmihnnnihgmmeilfjmjjc' // LINE
+const crxData = await loadFromChromeWebStore(extensionId) // Uint8Array
+```
+
+Crx FileからExtensionを作成:
+```ts
+const extension = compiler.fromUint8Array(crxData, {
+  extensionId: extensionId // Optional, これがないと動かない場合がある
+})
+```
+
+Extensionをxpiにコンパイル:
+```ts
+const xpiData = await extension.compile() // Uint8Array
+```
 ## サポート一覧表
 - 💯 - 完全に動作することが証明済み
 - ✅ - 不自然な点なし
