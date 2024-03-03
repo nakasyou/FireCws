@@ -1,4 +1,10 @@
 {
-    "deno.enable": true,
-    "deno.unstable": true
+    "deno.enable": false,
+    "deno.unstable": false,
+    "[javascript]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    }
 }

@@ -112,7 +112,7 @@ export const manifestTransformBase: Plugin = {
      * Delete `update_url`
      */
     ;(() => {
-      delete manifest.update_url
+      manifest.update_url = undefined
     })()
   }
 }
