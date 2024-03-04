@@ -2,21 +2,24 @@ import { unzipSync, zipSync } from 'fflate'
 import type { CrxExtension } from '../extension'
 import crxToZip from '../lib/crx-to-zip'
 import {
-  compileOptionsSchema,
   type CompileOptions,
   type CompileProgres,
-  type CompileResult
+  type CompileResult,
+  type SafeCompileOptions
 } from './types'
-import { parse } from 'valibot'
 import { CompileData } from './compile-data'
+import { defaultPlugins } from '../default-plugins'
 
 export const compile = async (
   crx: CrxExtension,
   options: CompileOptions,
   onProgres?: (progres: CompileProgres) => void
 ): Promise<CompileResult> => {
-  const safeOptions = parse(compileOptionsSchema, options)
-  console.log(safeOptions.esbuildInitializeOptions.wasmModule.toString())
+  const safeOptions: SafeCompileOptions = {
+    esbuildInitializeOptions: options.esbuildInitializeOptions ?? {},
+    version: options.version ?? 100,
+    plugins: options.plugins ?? defaultPlugins()
+  }
 
   const progresListener = onProgres ?? (() => null)
   // CRX to ZIP

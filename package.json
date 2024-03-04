@@ -30,11 +30,15 @@
   },
   "exports": {
     ".": {
-      "default": "./dist/index.js",
-      "import": "./dist/index.js",
-      "types": "./dist/types/index.d.ts"
+      "default": "./dist/node/index.js",
+      "import": "./dist/node/index.js",
+      "types": "./dist/types/index.d.ts",
+      "browser": "./dist/browser/index.js"
+    },
+    "./dist/*": {
+      "default": "./dist/*"
     }
   },
-  "version": "0.2.3",
+  "version": "0.2.4",
   "files": ["dist"]
 }

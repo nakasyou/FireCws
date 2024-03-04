@@ -3,7 +3,7 @@ import { parse } from '@babel/parser'
 import path from 'node:path'
 import * as esbuild from 'esbuild'
 
-export const astPlugin = (): BunPlugin => ({
+export const astPlugin = () => ({
   name: 'ast-plugin',
   async setup(build) {
     if (build.config) {
@@ -38,4 +38,4 @@ export const astPlugin = (): BunPlugin => ({
       }
     })
   },
-})
+}) satisfies BunPlugin

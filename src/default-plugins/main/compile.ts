@@ -1,6 +1,6 @@
 import generate from '@babel/generator'
 import * as types from '@babel/types'
-import * as esbuild from 'esbuild-wasm/lib/browser'
+import * as esbuild from 'esbuild-wasm'
 
 export interface CompileJsCodeOpts {
   cwsId: string

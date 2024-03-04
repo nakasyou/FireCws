@@ -1,6 +1,5 @@
-import type { Output } from 'valibot'
 import type { CrxExtension } from '..'
-import type { CompileOptions, compileOptionsSchema } from './types'
+import type { SafeCompileOptions } from './types'
 
 export type FileTree = {
   [path: string]: Uint8Array
@@ -8,7 +7,7 @@ export type FileTree = {
 
 export interface CompileDataInit {
   fileTree: FileTree
-  options: Output<typeof compileOptionsSchema>
+  options: SafeCompileOptions
   crx: CrxExtension
 }
 export type FireCwsFile = Readonly<{
@@ -50,7 +49,7 @@ export class CompileData {
     | {
         inited: false
       }
-  readonly options: Output<typeof compileOptionsSchema>
+  readonly options: SafeCompileOptions
   constructor(init: CompileDataInit) {
     this.#init = init
     this.#initedData = { inited: false }

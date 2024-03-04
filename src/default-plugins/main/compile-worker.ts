@@ -1,7 +1,6 @@
 import type { Output } from 'valibot'
 import { compileJsCode, type CompileJsCodeInitData } from './compile'
-import * as esbuild from 'esbuild-wasm/lib/browser'
-import type { compileOptionsSchema } from '../../compiler/types'
+import * as esbuild from 'esbuild-wasm'
 
 
 const compileFile = async (
