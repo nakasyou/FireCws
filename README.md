@@ -1,46 +1,48 @@
 <div align="center">
 
-  ![image](./assets/firecrx.svg)
+  ![image](./old/assets/firecrx.svg)
   ### FireCws
 </div>
 
 FireCws は、Chrome用に書かれた拡張機能(.crx)をFirefox用拡張機能(.xpi)にコンパイルするライブラリです。
-また、それを用いたChrome WebStoreからFirefoxでインストールできるようにする拡張機能も含まれていました。
 
 ## なんのために？
 Firefoxの欠点として、世界最大のブラウザ拡張機能プラットフォームである、Chrome Web Storeが使えない点がありました。それを解決します。
 
 ## つかいかた
-デフォルトのプラグインを用いてコンパイラを作成:
+### Install
+```shell
+npm i firecws #npm
+yarn add firecws #yarn
+pnpm add firecws #pnpm
+bun add firecws #bun
+```
+### Import
 ```ts
-import { Compiler, defaultPlugins } from 'https://firecws.deno.dev/x'
+import * as firecws from 'firecws' // Node/Bun
+import * as firecws from 'npm:firecws' // Deno
 
-const compiler = new Compiler({
-  plugins: [
-    ...defaultPlugins()
-  ]
-})
+import * as firecws from 'jsr:@ns/firecws' // JSR(wip)
 ```
 
-Crx FileをChrome Web Storeから読み込み:
+### 使う
+.crx拡張をChrome Web Storeから読み込み:
 ```ts
-import { loadFromChromeWebStore } from 'https://firecws.deno.dev/x'
-
 const extensionId = 'ophjlpahpchlmihnnnihgmmeilfjmjjc' // LINE
-const crxData = await loadFromChromeWebStore(extensionId) // Uint8Array
+const crxExt = await firecws.fromWebStore(extensionId)
 ```
 
-Crx FileからExtensionを作成:
+xpiにコンパイル:
 ```ts
-const extension = compiler.fromUint8Array(crxData, {
-  extensionId: extensionId // Optional, これがないと動かない場合がある
+const { xpi } = await firecws.compile(crxExt, {
+  // Options
+}, progres => {
+  // 進捗のハンドラー
 })
+
+xpi // xpiのUint8Array
 ```
 
-Extensionをxpiにコンパイル:
-```ts
-const xpiData = await extension.compile().compiled // Uint8Array
-```
 ## サポート一覧表
 - 💯 - 完全に動作することが証明済み
 - ✅ - 不自然な点なし

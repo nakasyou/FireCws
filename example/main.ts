@@ -1,5 +1,4 @@
 import * as firecws from '../dist/node'
-
 const id = 'ophjlpahpchlmihnnnihgmmeilfjmjjc'
 
 const crxBunFile = Bun.file(`tmp/${id}.crx`)
