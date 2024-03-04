@@ -4,7 +4,7 @@ import { parse, type ParseResult } from '@babel/parser'
 import generate from '@babel/generator'
 import traverse from '@babel/traverse'
 import * as types from '@babel/types'
-import * as esbuild from 'esbuild-wasm'
+import * as esbuild from 'esbuild-wasm/lib/browser'
 
 const EXTENDS = ['window', 'globalThis', 'location']
 

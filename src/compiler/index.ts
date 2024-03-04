@@ -16,6 +16,7 @@ export const compile = async (
   onProgres?: (progres: CompileProgres) => void
 ): Promise<CompileResult> => {
   const safeOptions = parse(compileOptionsSchema, options)
+  console.log(safeOptions.esbuildInitializeOptions.wasmModule.toString())
 
   const progresListener = onProgres ?? (() => null)
   // CRX to ZIP

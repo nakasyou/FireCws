@@ -1,5 +1,5 @@
 // @ts-expect-error
-import * as rawpolyfill from './polyfill?ast'
+import * as rawpolyfill from './polyfill/index.ts?ast'
 import traverse from '@babel/traverse'
 import * as types from '@babel/types'
 import { type ParseResult } from '@babel/parser'

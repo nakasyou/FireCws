@@ -1,5 +1,6 @@
+import type { Output } from 'valibot'
 import type { CrxExtension } from '..'
-import type { CompileOptions } from './types'
+import type { CompileOptions, compileOptionsSchema } from './types'
 
 export type FileTree = {
   [path: string]: Uint8Array
@@ -7,7 +8,7 @@ export type FileTree = {
 
 export interface CompileDataInit {
   fileTree: FileTree
-  options: Required<CompileOptions>
+  options: Output<typeof compileOptionsSchema>
   crx: CrxExtension
 }
 export type FireCwsFile = Readonly<{
@@ -49,9 +50,11 @@ export class CompileData {
     | {
         inited: false
       }
+  readonly options: Output<typeof compileOptionsSchema>
   constructor(init: CompileDataInit) {
     this.#init = init
     this.#initedData = { inited: false }
+    this.options = init.options
   }
   async init() {
     const manifestFile = this.open('manifest.json')

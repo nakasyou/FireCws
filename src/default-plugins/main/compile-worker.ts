@@ -1,7 +1,8 @@
+import type { Output } from 'valibot'
 import { compileJsCode, type CompileJsCodeInitData } from './compile'
-import * as esbuild from 'esbuild'
+import * as esbuild from 'esbuild-wasm/lib/browser'
+import type { compileOptionsSchema } from '../../compiler/types'
 
-await esbuild.initialize({})
 
 const compileFile = async (
   file: Uint8Array,
@@ -24,14 +25,17 @@ globalThis.onmessage = async (e: MessageEvent) => {
   const {
     file,
     initData,
-    options
+    options,
+    esbuildInitializeOptions
   }: {
     file: Uint8Array
     initData: CompileJsCodeInitData
     options: {
       cwsId: string
     }
+    esbuildInitializeOptions: esbuild.InitializeOptions
   } = e.data
+  await esbuild.initialize(esbuildInitializeOptions)
 
   const compiled = await compileFile(file, initData, options)
   await esbuild.stop()

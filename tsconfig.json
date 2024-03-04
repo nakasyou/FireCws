@@ -6,7 +6,6 @@
     "moduleResolution": "bundler",
     "moduleDetection": "force",
     "allowImportingTsExtensions": true,
-    "noEmit": true,
     "composite": true,
     "strict": true,
     "downlevelIteration": true,
@@ -18,9 +17,14 @@
     "verbatimModuleSyntax": true,
     "noUncheckedIndexedAccess": true,
     "types": [
-      "bun-types", // add Bun global
+      "@types/bun", // add Bun global
       "./plugins/plugin.d.ts"
-    ]
+    ],
+    "rootDir": "./src",
+    "outDir": "./dist/types",
+    "declaration": true,
+    "emitDeclarationOnly": true
   },
-  "exclude": ["old/**/*", "tmp/**/*"]
+  "exclude": ["old/**/*", "tmp/**/*"],
+  "include": ["src/**/*"]
 }

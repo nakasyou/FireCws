@@ -1,7 +1,7 @@
 import { test } from 'bun:test'
 import { compileJsCode } from './compile'
 import { initData } from './create-comple-init-data'
-import * as esbuild from 'esbuild-wasm'
+import * as esbuild from 'esbuild-wasm/lib/browser'
 
 await esbuild.initialize({
   worker: false

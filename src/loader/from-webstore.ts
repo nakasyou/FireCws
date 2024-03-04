@@ -21,6 +21,6 @@ export const fromWebStore = async (
   const data = await downloadFromWebStore(extensionId)
 
   return new CrxExtension(data, {
-    webstoreId: extensionId
+    cwsId: extensionId
   })
 }

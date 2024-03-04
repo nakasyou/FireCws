@@ -1,8 +1,6 @@
-import { parse, type ParseResult } from '@babel/parser'
 import generate from '@babel/generator'
-import traverse from '@babel/traverse'
 import * as types from '@babel/types'
-import * as esbuild from 'esbuild'
+import * as esbuild from 'esbuild-wasm/lib/browser'
 
 export interface CompileJsCodeOpts {
   cwsId: string

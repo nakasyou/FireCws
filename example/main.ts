@@ -14,8 +14,13 @@ const crx = await firecws.fromData(crxData, {
   cwsId: id
 })
 
-const { xpi, fileTree } = await firecws.compile(crx, {
+const path = await import.meta.resolve('esbuild-wasm/esbuild.wasm')
+const wasm = await WebAssembly.compile(await Bun.file(path).arrayBuffer())
 
+const { xpi, fileTree } = await firecws.compile(crx, {
+  esbuildInitializeOptions: {
+    wasmModule: wasm
+  }
 }, progres => console.info(firecws.formatProgres(progres)))
 
 await Bun.write(`tmp/${id}.xpi`, xpi)

@@ -12,8 +12,9 @@ export const mainPlugin = (): Plugin => ({
     const fileLengthDecLength = fileLength.toString().length
     log(`js compile: found ${fileLength} js file`)
 
+    const workerPath = import.meta.env.PRED ? './compile-worker.js' : './compile-worker.ts'
     const selializedCompileWorker = JSON.parse(JSON.stringify(initData))
-    const compileWorkerUrl = new URL('./compile-worker.ts', import.meta.url).href
+    const compileWorkerUrl = new URL(workerPath, import.meta.url).href
 
     let finishedIndex = 0
     const compileOneFile = (file: FireCwsFile, i: number) =>
@@ -28,15 +29,18 @@ export const mainPlugin = (): Plugin => ({
           type: 'module'
         })
         log(`Worker started: ${(i+1).toString().padStart(fileLengthDecLength, ' ')}/${fileLength} (${file.path})`)
-        compileWorker.onerror = () => {
+        compileWorker.onerror = (err) => {
           finished(data)
+          throw err.message
         }
+
         compileWorker.postMessage({
           file: data,
           initData: selializedCompileWorker,
           options: ({
             cwsId: compileData.meta.cwsId ?? crypto.randomUUID()
-          } satisfies CompileJsCodeOpts)
+          } satisfies CompileJsCodeOpts),
+          esbuildInitializeOptions: compileData.options.esbuildInitializeOptions
         })
 
         compileWorker.onmessage = (e) => {
