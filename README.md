@@ -4,6 +4,8 @@
   ### FireCws
 </div>
 
+他の言語で読む：[English (United Status)](./README.en_us.md)
+
 FireCws は、Chrome用に書かれた拡張機能(.crx)をFirefox用拡張機能(.xpi)にコンパイルするライブラリです。
 
 ## なんのために？
