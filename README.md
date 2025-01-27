@@ -4,20 +4,20 @@
   ### FireCws
 </div>
 
-FireCws は、Chrome用に書かれた拡張機能(.crx)をFirefox用拡張機能(.xpi)にコンパイルするライブラリです。
+FireCws compiles web extensions written for Chrome (.crx) into ones usable in Firefox (.xpi).
 
-## なんのために？
-Firefoxの欠点として、世界最大のブラウザ拡張機能プラットフォームである、Chrome Web Storeが使えない点がありました。それを解決します。
+## Why?
+One of the Firefox's weak points is that extensions in the world's largest browser extension marketplace, namely the Chrome Web Store, cannot be used. This is the solution.
 
-## つかいかた
-### Install
+## How?
+### Install it
 ```shell
 npm i firecws #npm
 yarn add firecws #yarn
 pnpm add firecws #pnpm
 bun add firecws #bun
 ```
-### Import
+### Import it
 ```ts
 import * as firecws from 'firecws' // Node/Bun
 import * as firecws from 'npm:firecws' // Deno
@@ -25,43 +25,43 @@ import * as firecws from 'npm:firecws' // Deno
 import * as firecws from 'jsr:@ns/firecws' // JSR(wip)
 ```
 
-### 使う
-.crx拡張をChrome Web Storeから読み込み:
+### Use it
+Download a .crx extension from the Chrome Web Store:
 ```ts
 const extensionId = 'ophjlpahpchlmihnnnihgmmeilfjmjjc' // LINE
 const crxExt = await firecws.fromWebStore(extensionId)
 ```
 
-xpiにコンパイル:
+Then, compile it to .xpi:
 ```ts
 const { xpi } = await firecws.compile(crxExt, {
   // Options
-}, progres => {
-  // 進捗のハンドラー
+}, progress => {
+  // Progress callback
 })
 
-xpi // xpiのUint8Array
+xpi // Uint8Array
 ```
 
-## サポート一覧表
-- 💯 - 完全に動作することが証明済み
-- ✅ - 不自然な点なし
-- ⭕ - 不自然な点があるが、大体の機能は使える
-- 🤔 - エラーがでたりして、完全に機能が使えない。不便。
-- ❌ - インストールができない
+## Extension support table
+- 💯 - Working completely
+- ✅ - No problems
+- ⭕ - Problems, but mostly usable
+- 🤔 - Errors occur, inconvenient to use
+- ❌ - Can't install
 
-| 名前 | チェック時拡張機能バージョン | チェック時FireCwsバージョン | Status |
+| Name | Extension version checked | FireCws version checked | Status |
 | --- | --- | --- | --- |
-| [LINE](https://chromewebstore.google.com/detail/line/ophjlpahpchlmihnnnihgmmeilfjmjjc?hl=ja) | 3.1.2 | 0.2.0 | 🤔 |
+| [LINE](https://chromewebstore.google.com/detail/line/ophjlpahpchlmihnnnihgmmeilfjmjjc?hl=en-US) | 3.1.2 | 0.2.0 | 🤔 |
 
-## 問題点
-コンパイル構造が肥大化していて、かなりコンパイルが遅いです。
+## Problems
+The compilation code is a little bloated and is slow.
 
 ## Special Thanks
 - @EdamAme-x
-  - LINE が origin を判定している事実とその解決策のアドバイス
+  - Information on how LINE uses the origin and advice on how to fix it
 
-## ライセンス
-特にファイルに明記してない限り、MIT LICENSEとします。
-## 貢献
-[CONTRIBUTING.md](CONTRIBUTING.md)を読んでみてください
+## License
+Unless otherwise specified, all files are licensed under the MIT License.
+## Contributing
+Please read [CONTRIBUTING.md](CONTRIBUTING.md)!
